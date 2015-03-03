@@ -18,7 +18,7 @@ class Api::V1::CandidatesController < ApplicationController
     if c.save
       render json: c, status: :created
     else
-      render json: "Invalid parameters"
+      render json: "Invalid parameters", status: 400
     end
   end
 

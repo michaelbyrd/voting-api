@@ -6,19 +6,31 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+
+ApiKey.create
+
 parties = ["Democrat", "Republican"]
-20.times do
-  Candidate.create(name: Faker::Name.name, party: parties.sample )
-end
-
-
-20.times do
+100.times do
   Voter.create(name: Faker::Name.name, party: parties.sample )
 end
 
-
 voters = Voter.all
-candidates = Candidate.all
-voters.each do |v|
-  Vote.create(candidate: candidates.sample, voter: v)
+
+rand(10..15).times do
+  starts = DateTime.now - rand(5..10).days
+  ends   = DateTime.now + rand(5..10).days
+
+  r = Race.create(start_at: starts, end_at: ends, title: Faker::Company.catch_phrase )
+
+  rand(2..5).times do
+    Candidate.create(name: Faker::Name.name, party: parties.sample, race: r )
+  end
+
+  candidates = r.candidates
+
+  voters.each do |v|
+    Vote.create(candidate: candidates.sample, voter: v, race: r)
+  end
+
 end

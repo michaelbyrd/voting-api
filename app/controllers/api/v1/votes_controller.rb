@@ -13,7 +13,7 @@ class Api::V1::VotesController < ApplicationController
     if v.save
       render json: v, status: :created
     else
-      render json: "Invalid params"
+      render json: "Invalid params", status: 400
     end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303184052) do
+ActiveRecord::Schema.define(version: 20150303195054) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20150303184052) do
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
     t.string   "party"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "race_id"
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,11 +45,13 @@ ActiveRecord::Schema.define(version: 20150303184052) do
   create_table "votes", force: :cascade do |t|
     t.integer  "voter_id"
     t.integer  "candidate_id"
+    t.integer  "race_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   add_index "votes", ["candidate_id"], name: "index_votes_on_candidate_id"
+  add_index "votes", ["race_id"], name: "index_votes_on_race_id"
   add_index "votes", ["voter_id"], name: "index_votes_on_voter_id"
 
 end
