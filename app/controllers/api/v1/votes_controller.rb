@@ -18,6 +18,6 @@ class Api::V1::VotesController < ApplicationController
   end
 
   private def vote_params
-    params.require(:vote).permit(:voter_id, :candidate_id)
+    params.require(:vote).permit(:voter_id, :candidate_id, :race_id)
   end
 end
