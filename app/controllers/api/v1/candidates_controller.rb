@@ -8,9 +8,18 @@ class Api::V1::CandidatesController < ApplicationController
     render json: candidates
   end
 
+  def show
+    c = Candidate.find(params[:id])
+    render json: c if c
+  end
+
   def create
-    c = Candidate.create(candidate_params)
-    render json: Candidate.all, status: :created
+    c = Candidate.new(candidate_params)
+    if c.save
+      render json: c, status: :created
+    else
+      render json: "Invalid parameters"
+    end
   end
 
   private def candidate_params
