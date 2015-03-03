@@ -3,7 +3,9 @@
 one:
   name: MyString
   party: MyString
+  race: one
 
 two:
   name: MyString
   party: MyString
+  race: one
