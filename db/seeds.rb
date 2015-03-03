@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+parties = ["Democrat", "Republican"]
+20.times do
+  Candidate.create(name: Faker::Name.name, party: parties.sample )
+end
+
+
+20.times do
+  Voter.create(name: Faker::Name.name, party: parties.sample )
+end
