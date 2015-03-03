@@ -1,6 +1,6 @@
 class Api::V1::VotersController < ApplicationController
   respond_to :json
-  skip_before_action :verify_authenticity_token
+  before_action :restrict_access
 
   def index
     if params[:party]
@@ -16,6 +16,11 @@ class Api::V1::VotersController < ApplicationController
     # v = Voter.create(voter_params)
     render json: Voter.all, status: :created
   end
+
+  private def restrict_access
+     api_key = ApiKey.find_by_access_token(params[:access_token])
+     head :unauthorized unless api_key
+   end
 
   # private def voter_params
   #   params.require(:voter).permit(:name, :party)
