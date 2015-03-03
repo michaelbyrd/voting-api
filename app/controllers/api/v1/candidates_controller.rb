@@ -9,12 +9,11 @@ class Api::V1::CandidatesController < ApplicationController
   end
 
   def create
-    c = Candidate.create(name: params[:name], party: params[:party])
-    # v = Voter.create(voter_params)
+    c = Candidate.create(candidate_params)
     render json: Candidate.all, status: :created
   end
 
-  # private def candidate_params
-  #   params.require(:candidate).permit(:name, :party)
-  # end
+  private def candidate_params
+    params.require(:candidate).permit(:name, :party)
+  end
 end
