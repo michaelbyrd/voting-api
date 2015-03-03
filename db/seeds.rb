@@ -15,3 +15,10 @@ end
 20.times do
   Voter.create(name: Faker::Name.name, party: parties.sample )
 end
+
+
+voters = Voter.all
+candidates = Candidate.all
+voters.each do |v|
+  Vote.create(candidate: candidates.sample, voter: v)
+end
