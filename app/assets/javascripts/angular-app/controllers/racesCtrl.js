@@ -6,13 +6,33 @@ app.controller('RacesCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.names = [];
 
   var config = { headers:  {
-        'Authorization': 'Token token=PUT KEY HERE'
+        'Authorization': 'Token token='
       }
   };
 
-  $http.get('./api/v1/races/', config).success(function(data) {
+  $http.get('./api/v1/races/', config).
+  success(function(data) {
     $scope.races = data;
+  }).
+  error(function(data) {
+    $scope.races = [{"title":"Something went wrong with your Authorization","vote_count": 0}]
   });
+
+
+
+  $scope.addRace = function() {
+    var dataObject = {
+      title : $scope.title,
+      start_at : "Tue, 03 Mar 2015 21:54:29 -0500",
+      end_at : "Wed, 04 Mar 2015 21:54:13 -0500"
+    }
+    $http.post('./api/v1/races', dataObject, config ).
+    success(function(data, status, headers, config) {
+    }).
+    error(function(data, status, headers, config) {
+
+    });
+  }
 
 
 }]);

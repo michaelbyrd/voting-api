@@ -11,9 +11,4 @@ class Vote < ActiveRecord::Base
     { voter: voter.name, candidate: candidate.name }
   end
 
-  # private def voters_can_vote_once_per_race
-  #   if self.race.votes.find_by(voter_id: )
-  #    errors.add(:vote, "can't vote twice in the same race")
-  #  end
-  # end
 end

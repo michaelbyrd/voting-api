@@ -1,9 +1,22 @@
 <div ng-app='app.exampleApp' ng-controller='RacesCtrl'>
+
+  <a href="" ng-click="addRace()">Add Race</a>
+
+  <form ng-submit="addRace()">
+    Title:<input ng-model="title"/>
+    Start At:<input ng-model="start_at"/>
+    End At:<input ng-model="end_at"/>
+    <button type="submit">Send</button>
+  </form>
+
+  {{ title }}
+
   <table>
     <tr>
       <th>Title</th>
       <th>Votes</th>
     </tr>
+
     <tr ng-repeat="race in races">
       <td>{{race.title}}</td>
       <td>{{race.vote_count}}</td>
