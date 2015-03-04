@@ -22,9 +22,9 @@ class Race < ActiveRecord::Base
     [:day, :hour, :minute].each do |unit|
       if difference >= 1.send(unit)
         time = (difference / 1.send(unit)).round
-        return "#{time} #{unit}#{time==1 ? '' : 's'} remaining"
+        return "#{time} #{unit}#{time==1 ? '' : 's'}"
       end
     end
-    return "#{difference} seconds remaining"
+    return "#{difference} seconds"
   end
 end

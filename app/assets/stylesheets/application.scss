@@ -21,6 +21,15 @@
    @include span-columns(8);
  }
 
+ .two-wide {
+   @include span-columns(2);
+ }
+
+
 // .title {
 //    text-align: center;
 // }
+
+th, table {
+  text-align: center;
+}
