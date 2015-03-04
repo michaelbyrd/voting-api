@@ -15,7 +15,7 @@ class Api::V1::RacesController < ApplicationController
   def create
     r = Race.new(race_params)
     if r.save
-      render json: r, status: :created
+      render json: Race.all, status: :created
     else
       render json: "Invalid params", status: 400
     end

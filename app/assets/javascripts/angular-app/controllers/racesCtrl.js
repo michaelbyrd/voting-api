@@ -10,6 +10,7 @@ app.controller('RacesCtrl', ['$scope', '$http', function($scope, $http) {
       }
   };
 
+
   $http.get('./api/v1/races/', config).
   success(function(data) {
     $scope.races = data;
@@ -22,12 +23,13 @@ app.controller('RacesCtrl', ['$scope', '$http', function($scope, $http) {
 
   $scope.addRace = function() {
     var dataObject = {
-      title : $scope.title,
-      start_at : "Tue, 03 Mar 2015 21:54:29 -0500",
-      end_at : "Wed, 04 Mar 2015 21:54:13 -0500"
+      title : $scope.race.title,
+      start_at : $scope.race.start_at,
+      end_at : $scope.race.end_at
     }
     $http.post('./api/v1/races', dataObject, config ).
     success(function(data, status, headers, config) {
+      $scope.races = data
     }).
     error(function(data, status, headers, config) {
 
