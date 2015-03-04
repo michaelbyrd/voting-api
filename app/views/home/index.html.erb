@@ -1,4 +1,14 @@
-<h1>Home</h1>
-<% @races.each do |r| %>
-  <%= r %>
-<% end %>
+<div ng-app='app.exampleApp' ng-controller='RacesCtrl'>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Votes</th>
+    </tr>
+    <tr ng-repeat="race in races">
+      <td>{{race.title}}</td>
+      <td>{{race.vote_count}}</td>
+    </tr>
+  </table>
+
+
+</div>

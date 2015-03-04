@@ -3,11 +3,14 @@ class HomeController < ApplicationController
   skip_before_action :restrict_access, only: :index
 
   def index
-    # puts ENV['VOTING_API_TOKEN']
-    # @races = RaceRequest.new.races
-    # @races = []
-    @races = HTTParty.get("http://localhost:3000/api/v1/votes/",
-                            :headers => {
-                            "access_token" => ENV['VOTING_API_TOKEN']})
+
   end
 end
+
+
+# puts ENV['VOTING_API_TOKEN']
+# @races = RaceRequest.new.races
+# @races = []
+# @races = HTTParty.get("http://localhost:3000/api/v1/votes/",
+#                         :headers => {
+#                         "access_token" => ENV['VOTING_API_TOKEN']})
