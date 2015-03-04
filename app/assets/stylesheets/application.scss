@@ -16,3 +16,11 @@
  @import "bourbon";
  @import "base/base";
  @import "neat";
+
+ .eight-wide {
+   @include span-columns(8);
+ }
+
+// .title {
+//    text-align: center;
+// }

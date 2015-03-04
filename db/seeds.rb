@@ -12,7 +12,7 @@ ApiKey.create
 
 parties = ["Democrat", "Republican"]
 
-50.times do
+100.times do
   Voter.create(name: Faker::Name.name, party: parties.sample )
 end
 

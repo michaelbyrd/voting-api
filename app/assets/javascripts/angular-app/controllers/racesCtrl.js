@@ -6,7 +6,7 @@ app.controller('RacesCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.names = [];
 
   var config = { headers:  {
-        'Authorization': 'Token token='
+        'Authorization': 'Token token=c0efb4d89fd6535467433796edee070e'
       }
   };
 
@@ -29,7 +29,8 @@ app.controller('RacesCtrl', ['$scope', '$http', function($scope, $http) {
     }
     $http.post('./api/v1/races', dataObject, config ).
     success(function(data, status, headers, config) {
-      $scope.races = data
+      $scope.races.push(data);
+      $scope.race.title = ""
     }).
     error(function(data, status, headers, config) {
 

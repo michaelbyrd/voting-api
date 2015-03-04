@@ -5,13 +5,17 @@ class Candidate < ActiveRecord::Base
   validates :party, presence: true
 
   def as_json(options = {})
-    { name: name, vote_count: votes.count, percent_of_votes: percent_of_votes.round(2) }
+    { name: name, vote_count: votes.count, percent_of_votes: percent_of_votes }
   end
 
   def percent_of_votes
     count = self.votes.count.to_f
     total = self.race.votes.count.to_f
-    count / total * 100.00
+    if count > 0 && total > 0
+      (count / total * 100.00).round(2)
+    else
+      0.0
+    end
   end
 
 

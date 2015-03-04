@@ -3,7 +3,7 @@ class Vote < ActiveRecord::Base
   belongs_to :candidate
   belongs_to :race
 
-  validates :voter_id, uniqueness: true
+  validates :voter_id, presence: true
   validates :candidate_id, presence: true
   validates :race_id, presence: true
 

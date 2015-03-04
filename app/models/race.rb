@@ -3,9 +3,10 @@ class Race < ActiveRecord::Base
   has_many :votes
 
   def as_json(options = {})
-    { title: title, vote_count: votes.count, open: open?,
+    { title: title, vote_count: votes.count,
       time_remaining: display_remaining_time,
-      candidates: candidates }
+      candidates: candidates
+      }
   end
 
   def open?
